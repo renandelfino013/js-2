@@ -1,0 +1,1 @@
+   sn = prompt("deseja continuar jogando s/n: ");
