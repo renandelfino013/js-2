@@ -1,5 +1,6 @@
 const prompt = require("prompt-sync")();
 let opçao;
+let opçao2;
 let nome= "";
 
 let anos=0;
@@ -8,7 +9,8 @@ let l;
 let depositar;
 let qualid;
 let saque
-let contalogada= "";
+let contalogada=null;
+
 
 
 class contas {
@@ -16,7 +18,7 @@ class contas {
 
     constructor(titular="", idade,senha=""){
   
-   
+   this.extrato=[];
     this.id=contas.proximoid++;
     this.titular=titular;
     this.idade=idade;
@@ -39,9 +41,20 @@ if(!achado)
    {
     console.log("conta n encontrada!")
    }
-    else if (contalogada.saldo>valor){
+    else if (contalogada.saldo>=valor){
        contalogada.saldo-=valor
         achado.saldo+=valor
+        contalogada.extrato.push({
+            tipo:"Transferencia",
+            de:contalogada.titular,
+            valor:valor,
+            data: new Date().toLocaleString()
+        })
+        achado.extrato.push({
+            tipo:"Transferencia",
+            valor:valor,
+            data: new Date().toLocaleString()
+        })
        console.log(`transferencia realizada com sucesso! seu novo saldo é ${contalogada.saldo}`) 
 
 }
@@ -49,19 +62,21 @@ else{
     console.log("saldo insuficiente!")
 }
 }
-function deposite(idd, valor,){
- let achado= conta.find(c=> c.id===idd)
-   if(!achado) 
-   {
-    console.log("conta n encontrada!")
-   }
-   else {
-    contalogada=achado
+function deposite( valor){
+ let achado= contalogada
+   
+    console.clear()
     achado.saldo+=valor
+    contalogada.extrato.push({
+        tipo:"Deposito",
+        valor:valor,
+        data: new Date().toLocaleString()
+    })
+    console.log(`ola! ${contalogada.titular}`)
     console.log(`deposito realizado com sucesso! seu novo saldo é ${achado.saldo}`)
       
    }
-}
+
 
 
 function buscarid(idd,nome,senha){
@@ -70,21 +85,30 @@ function buscarid(idd,nome,senha){
    if(!achado) 
    {
     console.log("senha ou nome de usuatio incorretos!!")
+    return false
    }
    else{
     console.log(achado)
     contalogada=achado  
+    return true
    }
 }
 
-function sacar(idd,valor,senha){
-let achado= conta.find(c=> c.id===idd && c.senha===senha) 
+function sacar(valor,senha){
+let achado= conta.find(c=> c.senha===senha) 
    if(!achado) 
    {
     console.log("conta n encontrada!")
    }
-   else if(achado.saldo>valor){
+   else if(achado.saldo>=valor){
     achado.saldo-=valor
+   contalogada.extrato.push({
+    tipo: "saque",
+    valor:valor,
+    data: new Date().toLocaleString(),
+   })
+
+    
     console.log(`saque realizado com sucesso!, seu novo saldo é ${achado.saldo}`)
       
    }
@@ -103,47 +127,101 @@ l=conta.length-1
 
 contalogada=conta[l];
 console.log(`conta criada com sucesso!`)
-console.log(`bem vindo ${conta[l].titular} vc tem ${conta[l].idade} anos seu id é ${conta[l].id}`)}
+console.log(`bem vindo ${conta[l].titular} vc tem ${conta[l].idade} anos seu id é ${conta[l].id}`)
+return true
+}
+function menuconta(){
+while (opçao2!=0){
+console.log("1-depositar")
+    console.log("2-sacar")
+    console.log("3-trasferir")
+    console.log("4-extrato")
+    console.log("0-sair")
+    opçao2=Number(prompt("escolha uma opçao: "))
+    
+if(opçao2==0){
+    contalogada=null
+    console.log("volte sempre!")
+    
+    menuprincipal()
+    break
+    
+}
+else if (opçao2==1){
 
+depositar= Number(prompt("quanto vc quer depositar? "))
+deposite(depositar)
+}
+else if(opçao2==2){
+    console.clear()
+      
+    saque= Number(prompt("quanto vc quer sacar? "))
+    let confirsenha= prompt("qual a senha da conta? ")
+    sacar(saque,confirsenha)
+}
+else if(opçao2==3){
+    console.clear()
+let chave = Number(prompt("qual o id da conta q vc deseja transferir? "))
+console.log(`saldo atual: ${contalogada.saldo}`)
+let valor= Number(prompt("qual o valor da transferencia? "))
+let senha= prompt("qual a senha da sua conta? ")
+    trasferir(chave,valor,senha)}
+
+else if (opçao2==4){
+    console.log(`extrato da conta de ${contalogada.titular}`)
+    console.log(`saldo atual: ${contalogada.saldo}`)
+    for(let movi of contalogada.extrato){
+        console.log(`${movi.data} | ${movi.tipo} de ${movi.valor}`)
+    }
+
+
+}
+
+
+
+}
+
+}
+
+function menuprincipal(){
+    opçao2=-1
 while(opçao!=0){
-    console.log(`bem vindo ao seu banco ${contalogada.titular} `)
+    if(opçao==0){
+        console.log("volte sempre!")
+        console.log(conta)
+        
+        break
+        return false
+        
+    }
+
+    console.log(`bem vindo ao NU-no-banko`)
     console.log("---------------------------")
     console.log("1-criar conta")
     console.log("2-acessar conta")
-    console.log("3-depositar")
-    console.log("4-sacar")
-    console.log("5-trasferir")
     console.log("0-sair")
     opçao=Number(prompt("escolha uma opçao: "))
     if(opçao==1){
-    criarconta()
+    if(criarconta()){
+        console.clear()
+        console.log(`bem vindo ${contalogada.titular}`)
+        menuconta()
+        
+    }
 }
 else if(opçao==2){
 let idbusca= Number(prompt("qual o id da sua conta? "))
 let nomebusca= prompt("qual o nome do titular da conta? ")
 let senhabusca= prompt("qual a senha da conta? ")
-buscarid(idbusca,nomebusca,senhabusca)
+if(buscarid(idbusca,nomebusca,senhabusca)){
+    console.clear()
+    console.log(`bem vindo de volta ${contalogada.titular}`)
+    menuconta()
 }
-else if (opçao==3){
-qualid= Number(prompt("qual o id da conta que vc quer depositar? "))
-depositar= Number(prompt("quanto vc quer depositar? "))
-deposite(qualid, depositar)
-}
-else if(opçao==4){
-    let idd= Number(prompt("qual o id da sua conta? "))    
-    saque= Number(prompt("quanto vc quer sacar? "))
-    let confirsenha= prompt("qual a senha da conta? ")
-    sacar(idd,saque,confirsenha)
-}
-else if(opçao==5){
-let chave = Number(prompt("qual o id da conta q vc deseja transferir? "))
-let valor= Number(prompt("qual o valor da transferencia? "))
-let senha= prompt("qual a senha da sua conta? ")
-    trasferir(chave,valor,senha)}
+}}}
 
+    if (menuprincipal()){
 
-
-
-
-}
-console.log(conta)
+    }
+    else{
+console.log(conta)}
