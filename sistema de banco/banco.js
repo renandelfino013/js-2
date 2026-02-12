@@ -6,7 +6,9 @@ let nome = "";
 let anos = 0;
 let conta = [];
 let l;
+class banco(nome){
 
+}
 let contalogada = null;
 
 class contas {
