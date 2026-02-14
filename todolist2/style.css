@@ -55,3 +55,6 @@ section#sectarefas{
     color: black;
     outline: none;
 }
+.concluida{
+    text-decoration: line-through;
+}

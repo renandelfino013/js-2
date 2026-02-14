@@ -1,90 +1,72 @@
-const prompt = (require("prompt-sync")());
 let tarefa = [];
-let opcao = undefined;
+
 class tarefas {
-    static proximoid = 1;
-    
-constructor(nometarefa = "",descricao = "", estado,criado){
-    
-this.nometarefa = nometarefa
-this.descrição = descricao
-this.id = tarefas.proximoid++ 
-this.estado = estado
-this.criado= criado
+  static proximoid = 1;
+
+  constructor(nometarefa = "", descricao = "", estado = false, criado) {
+    this.nometarefa = nometarefa;
+    this.descrição = descricao;
+    this.id = tarefas.proximoid++;
+    this.estado = estado;
+    this.criado = criado;
+  }
 }
 
+function criartarefa() {
+  let data = new Date().toLocaleDateString("pt-br");
+
+  let mome = false;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let tarefainput = form.tarefa.value;
+    if (tarefainput === "") return;
+    const lis = document.createElement("li");
+    const botao = document.createElement("button")
+    const check = document.createElement("button")
+
+    botao.textContent = "remove?"
+    check.textContent = "Check?"
+    botao.addEventListener ("click" , (b) =>{
+         const id = Number (lis.dataset.id)
+        tarefa = tarefa.filter( t => t.id !== id)
+        lis.remove()
+        
 
 
-
-
-
-
-}
-function mostratarefas(){
-    for(let i = 0 ;  i < tarefa.length; i++){
-        console.log(`ID `,tarefa[i].id,`nome: `,tarefa[i].nometarefa,` concluida? `, tarefa[i].estado  )
+    })
+    check.addEventListener("click", (c) => {
+        const id = Number(lis.dataset.id)
+        let tarefaatual = tarefa.find(t =>t.id === id )
+       
+     tarefaatual.estado = !tarefaatual.estado
+     if(tarefaatual.estado === true){
+        check.textContent = "✅"
+        lis.classList.add("concluida")
     }
+        else{
+            check.textContent = "❌"
+            lis.classList.remove("concluida")
+        }
+        
+        console.log(tarefa)
 
-}
-function criartarefa(){
-let data= new Date().toLocaleDateString("pt-br")
-
- let mome = false
- 
-let nometarefa= prompt("nome da tarefa?: ")
-let descrição = prompt("oq diz sobre sua tarefa: ")
-criartaref = tarefa.push(new tarefas(nometarefa,descrição,mome,data) )
-console.clear() 
-console.log(`tarefa criada com sucesso!`)}
-
-
-function remove(){
-let qual = prompt("qual id da tarefa q vc deseja remover")
-const revove = tarefa.splice (qual-1, 1) 
-
-
-
-}
-function resetarid(){
-  for (let i = 0; i < tarefa.length; i++) {
-    tarefa[i].id = i + 1 ;  
-
-
-}}
-function check(){
-        let idd = Number(prompt("qual o id da tarefa que vc deseja concluir? "))
-        idd = idd -1 
-        tarefa[idd].estado = true
-
-
+    } )
     
-}
-
-
-while(opcao !== 0  ){
-    mostratarefas()
-    console.log(`bem vindo ao seu to do list`)
-console.log(`-----------------------------`)
-console.log(`deseja criar uma tarefa? [1]`)
-console.log(`deseja concluir uma tarefa? [2]`)
-console.log("deseja remover alguma tarefa? [3]")
-opcao = prompt(Number)
-if(opcao == 1 ){
-    console.clear()
+    lis.textContent = tarefainput
     
-    criartarefa()
-    resetarid()
-}
-else if(opcao == 2){
-    check()
-}
-else if (opcao == 3){
-    remove()
-    resetarid()
-}
-}
-
-
+  
+    lista.appendChild(lis)
+      lis.appendChild(botao)
+      lis.appendChild(check)
     
-
-
+    form.reset()
+    
+    criartaref = new tarefas(tarefainput)
+    tarefa.push(criartaref)
+    lis.dataset.id = criartaref.id
+  });
+}
+let form = document.querySelector("form");
+let lista = document.querySelector("ul");
+criartarefa()
