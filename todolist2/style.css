@@ -1,16 +1,22 @@
+
 *{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border: 0;
     padding: 0;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Passion+One:wght@400;700;900&family=Playwrite+NZ+Basic:wght@100..400&family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic:wght@100..400&display=swap');
+
 body{
     color:rgb(255, 255, 255);
     background-color: black;
     justify-items: center;
+    font-family: 'Playwrite NZ Basic', monospace;
+
 
 }
 main{
-    background-color: rgb(109, 2, 2);
+    background-color: rgba(255, 255, 255, 0.178);
     display:flexbox ;
     flex-direction: column;
     align-items: center;
@@ -18,6 +24,8 @@ main{
     width: 350px;
     height: 500px;
     border-radius: 10px;
+    font-family: 'Playwrite NZ Basic', monospace;
+    font-weight: bold;
 }
 section#sectarefas{
     align-items: center;
@@ -38,6 +46,7 @@ section#sectarefas{
     color: white;
     box-shadow: 1px 1px 10px rgb(0, 0, 0);
     
+    
 }
 #submit:hover{
     background-color: rgb(63, 0, 0);
@@ -57,4 +66,34 @@ section#sectarefas{
 }
 .concluida{
     text-decoration: line-through;
+}
+ul{
+    margin-top: 20px;
+    list-style: none;
+}
+.tarefa-item{
+background-color: rgb(197, 194, 194);
+border-radius: 3px;
+color: black;
+padding: 5px;
+text-align: center;
+margin-top: 10px;
+box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.24);
+font-family: 'Montserrat';
+font-weight: bold;
+
+}
+.listavazia{
+    display: none;
+}
+h3{
+    display: inline;
+}
+.inputtarefa{
+    background-color: transparent;
+}
+.inputtarefa:focus{
+    background-color: transparent;
+
+    outline: none;
 }
