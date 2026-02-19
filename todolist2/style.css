@@ -1,11 +1,11 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Passion+One:wght@400;700;900&family=Playwrite+NZ+Basic:wght@100..400&family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic:wght@100..400&display=swap');
 *{
     border: 0;
     padding: 0;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Passion+One:wght@400;700;900&family=Playwrite+NZ+Basic:wght@100..400&family=Sriracha&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic:wght@100..400&display=swap');
+
 
 body{
     color:rgb(255, 255, 255);
@@ -94,6 +94,14 @@ h3{
 }
 .inputtarefa:focus{
     background-color: transparent;
-
+    max-width: 127px;
     outline: none;
+}
+.add-button{
+    background-color: transparent;
+    color: white;
+    font-size: 30px;
+    margin-top: 10px;
+    font-weight: bold;
+    border-radius: 5px;
 }
