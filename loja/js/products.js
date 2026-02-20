@@ -17,7 +17,7 @@ let produtos = [
      id:3,
     nomeproduto:'Placa de Vídeo XFX AMD RADEON RX 7600 Gaming Graphics Card, 8GB,', 
     preço: 1899.99,
-    img: "./assets/placavideopreta.png",
+    img: "./assets/placapreta.png",
   },
   {
     id: 4,

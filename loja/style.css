@@ -127,26 +127,46 @@ padding: 5px;}
 .carrinhojs{
     position: absolute;
     top: 100px;
-    right: 1;
-    left:27%;
-    width: 600px;
+    right: 50%;
+    left:50%;
+    transform: translate(-50%, 0);
+    max-width: 600px;
+    min-width: 350px;
     height: 600px;
     background-color: #464545;
     color: white;
     padding: 16px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(100px, 100px));
+    gap: 10px;
 }
 .produtocarrinho{
-
-    gap: 10px;
-    border: 1px solid #ff0000;
+      display: flex;
+      align-items: center;
+      height: auto;
+      width: 100%;
     padding: 10px;
+    max-height: 150px;
+    
 }
+.produtocarrinho span{
+    font-size: 1rem;
+    font-weight: 600;
+    font-style: oblique;
+
+}
+.produtocarrinho p,span{
+    display: inline;
+    
+}
+
 .produtocarrinho img{
-    width: 100%;
-    height: 250px;
-    background-size: cover;
+    display: inline;
+    height: auto;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+.escondido{
+   display: none;
 }
