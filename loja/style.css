@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    background-color: #214881;
+    align-items: center;
+    justify-content: space-between;
+}
+.brand{
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    width: 200px;
+    padding-left: 16px;
+}
+ul{
+    width: 100%;
+    display: inline-flex;
+    list-style: none;
+    justify-content: space-between;
+}
+#lupa{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 20px;
+    background-image: url(./assets/lupa.png);
+    background-size: cover;
+    background-position: center;
+    
+}
+#carrinho{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-image: url(./assets/vista-lateral-vazia-do-carrinho-de-compras.png);
+    background-size: cover;
+    background-position: bottom;
+    cursor: pointer;
+}
+#carrinho:hover{
+    background-color: #ff6f00;
+    border: 1px solid #000000;
+    border-radius: 5px;
+}
+#logo{
+    width: 100px;
+    height: 100px;
+    background-image: url(./assets/logo.png);
+    background-size: cover;
+    background-position: center;
+}
+#catalogo{
+    display: grid;
+    align-items: stretch;
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    gap: 20px;
+    padding: 16px;
+}
+.produto{
+    width: 100%;
+    height: 100%;
+    background-color: #214881;
+    color:  white;
+    border:3px solid #3773cc;
+}
+.img{
+    width: 100%;
+    height: 220px;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+     background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#img4{
+    background-image: url(./assets/ps5.png);
+     
+}
+#img3{
+    background-image: url(./assets/placa.png);
+}
+#img2{
+    background-image: url(./assets/ssd.png);
+}
+#img1{
+    background-image: url(./assets/monitor.png);
+}
+span{
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-style: oblique;
+    padding: 5px;
+    margin-bottom: 5px;
+}.valor{
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ff6f00;
+    padding: 5px;
+}
+p{
+    padding: 5px;
+
+}
+.btcarrinho{
+    
+    width: 100%;
+    height: 50px;
+    background-color: #ff6f00;
+    color: white;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+.paibt{
+padding: 5px;}
+
+.carrinhojs{
+    position: absolute;
+    top: 100px;
+    right: 1;
+    left:27%;
+    width: 600px;
+    height: 600px;
+    background-color: #464545;
+    color: white;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.produtocarrinho{
+
+    gap: 10px;
+    border: 1px solid #ff0000;
+    padding: 10px;
+}
+.produtocarrinho img{
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
