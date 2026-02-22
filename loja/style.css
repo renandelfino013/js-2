@@ -125,8 +125,11 @@ p{
 padding: 5px;}
 
 
-.carrinhojs{
-    display: flex;
+#carrinhojs{
+  display: none;
+}
+#carrinhojs.ativo{
+  display: flex;
     flex-direction: column;
     gap: 20px;
     position: absolute;
@@ -138,6 +141,7 @@ padding: 5px;}
     padding: 16px;
     width: 400px;
 }
+
 .produtocarrinho{
       display: flex;
       align-items: center;
@@ -173,4 +177,17 @@ padding: 5px;}
 }
 h1{
     margin: 0;
+}
+.btremover{
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 2em;
+    background-color: #00000000;
+    border: none;
+    color: white;
+
+}
+.btremover:hover{
+    background-color: #00000030;
 }
