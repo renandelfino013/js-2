@@ -1,5 +1,18 @@
 let produtos = [
-  {
+
+
+];
+async function chamarapi(){
+const url ='https://fakestoreapi.com/products'
+const resp = await fetch(url);
+const dados = await resp.json();
+
+produtos = dados
+console.log(produtos)
+}
+
+
+/*  {
     id:1,
     nomeproduto:
       ' Monitor Gamer LG UltraGear 27", FHD, 180Hz, 1ms, IPS',
@@ -30,6 +43,4 @@ let produtos = [
   img: "./assets/ps5preto.png",
     quantidade: 1,
 
-  }
-
-];
+  }*/

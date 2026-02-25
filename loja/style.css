@@ -71,13 +71,14 @@ ul{
     border:3px solid #3773cc;
 }
 .img{
-    width: 100%;
-    height: 220px;
+    width:100%;
+    height: 200px;
     background-color: #ffffff;
     margin-bottom: 10px;
      background-size: 70%;
     background-repeat: no-repeat;
     background-position: center;
+    padding: 5px;
 }
 
 #img4{
@@ -160,7 +161,8 @@ padding: 5px;}
 
 .produtocarrinho img{
     display: inline;
-    height: auto;
+    width: 70px;
+    height: 70px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
