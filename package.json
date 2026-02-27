@@ -1,5 +1,16 @@
 {
   "dependencies": {
+    "express": "^5.2.1",
     "prompt-sync": "^4.2.0"
-  }
+  },
+  "name": "teste",
+  "version": "1.0.0",
+  "description": "teste de back",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "fetchAPI.js"
+  },
+  "author": "renan",
+  "license": "ISC"
 }
