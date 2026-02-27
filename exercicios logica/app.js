@@ -19,10 +19,10 @@ resp.send({
 
 })
 app.post("/usuario" , (req,resp) =>{
-    let {nome} = req.body
+    let name = req.body
 return resp.json({
     msg: "usuario recebido",
-    dados:nome,
+    dados:name,
   
 })
 
