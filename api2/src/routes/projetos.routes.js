@@ -1,8 +1,10 @@
 const express =require("express") ;
 const router = express.Router()
+const { ler,salvar } = require("../utils/db");
+const projetosController = require("../controllers/projetos.controller")
 
-router.get('/', (req , resp) => {
-return resp.status(200).json({msg:"funcionando"})
+router.get("/", projetosController.listarprojetos)
+router.post("/novo" , projetosController.criarprojetos)
 
-})
+
 module.exports = router
