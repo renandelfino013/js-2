@@ -38,10 +38,6 @@ app.use(express.json())
     salvar(produtos);
     return resp.status(201).json(novo)
  })
- app.listen(5000,() =>{
-   console.log("porta 5000");
-   
- } ) 
  app.get("/produtos/:id" , (req,resp) =>{
    const produtos = ler();
    const id =Number( req.params.id);
@@ -60,3 +56,9 @@ app.use(express.json())
    return resp.status(200).json(produtos)
    
  })
+ app.
+ app.listen(5000,() =>{
+   console.log("porta 5000");
+   
+ } ) 
+ 
