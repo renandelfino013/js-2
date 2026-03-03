@@ -56,7 +56,21 @@ app.use(express.json())
    return resp.status(200).json(produtos)
    
  })
- app.
+ app.patch("/produtospatch/:id", (req, resp) =>{
+ const produtos = ler()
+ const id = Number(req.params.id)
+ const index = produtos.find(p=> p.id === id)
+ if(!index){
+  return resp.status(404).json({error: "produto n encontrado"})
+ }
+  delete req.body.id
+  Object.assign(index , req.body)
+  salvar(produtos)
+return resp.status(200).json({msg: "produto alterado"}, produtos[index])
+
+
+
+ })
  app.listen(5000,() =>{
    console.log("porta 5000");
    
