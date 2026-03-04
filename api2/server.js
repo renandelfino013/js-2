@@ -7,5 +7,5 @@ app.use("/projetos" , projetosroutes)
 
 
 app.listen(3000 ,() =>{
-console.log("aaaa")
+console.log("rodando na porta 3000")
 })

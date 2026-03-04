@@ -1,9 +1,4 @@
-[
-  {
-    "title": "cagar no mato"
-  },
-  {
-    "nome": "estudar back end",
-    "id": null
-  }
-]
+{
+  "projetos": [],
+  "tarefas": []
+}
