@@ -19,14 +19,7 @@ exports.criarprojetos = (req,resp) =>{
         })
 
     }
-    if (projetos.length > 0){
-
-      novoid =projetos[projetos.length -1].id +1;
-        novoprojeto.id = novoid
-    }
-    else{
-        novoid=1;
-    }
+   novoid = Number(Date.now())
     let data =new Date() 
     novoprojeto.criadoem= data
     novoprojeto.id = novoid

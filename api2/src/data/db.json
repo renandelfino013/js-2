@@ -1,4 +1,19 @@
 {
-  "projetos": [],
-  "tarefas": []
+  "projetos": [
+    {
+      "nome": "estudar",
+      "criadoem": "2026-03-05T02:57:29.752Z",
+      "id": 1772679449752,
+      "estado": true
+    }
+  ],
+  "tarefas": [
+    {
+      "nome": "estudar html",
+      "criadoem": "2026-03-05T04:03:12.323Z",
+      "id": 1772683392323,
+      "estado": true,
+      "projetoid": 1772679449752
+    }
+  ]
 }
