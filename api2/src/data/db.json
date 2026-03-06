@@ -5,6 +5,12 @@
       "criadoem": "2026-03-05T02:57:29.752Z",
       "id": 1772679449752,
       "estado": true
+    },
+    {
+      "nome": "jogar",
+      "criadoem": "2026-03-06T01:21:35.918Z",
+      "id": 1772760095918,
+      "estado": true
     }
   ],
   "tarefas": [
@@ -14,6 +20,34 @@
       "id": 1772683392323,
       "estado": true,
       "projetoid": 1772679449752
+    },
+    {
+      "nome": "estudar react",
+      "criadoem": "2026-03-05T23:59:02.534Z",
+      "id": 1772755142534,
+      "estado": "em andamento",
+      "projetoid": 1772679449752
+    },
+    {
+      "nome": "fortnite",
+      "criadoem": "2026-03-06T01:22:39.249Z",
+      "id": 1772760159249,
+      "estado": "a fazer",
+      "projetoid": 1772760095918
+    },
+    {
+      "nome": "css",
+      "criadoem": "2026-03-06T01:28:01.258Z",
+      "id": 1772760481258,
+      "estado": "a fazer",
+      "projetoid": 1772760095918
+    },
+    {
+      "nome": "cagar",
+      "criadoem": "2026-03-06T02:57:54.564Z",
+      "id": 1772765874564,
+      "estado": "a fazer",
+      "projetoid": 1772760095918
     }
   ]
 }
