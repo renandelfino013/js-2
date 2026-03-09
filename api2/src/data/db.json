@@ -14,13 +14,7 @@
     }
   ],
   "tarefas": [
-    {
-      "nome": "estudar html",
-      "criadoem": "2026-03-05T04:03:12.323Z",
-      "id": 1772683392323,
-      "estado": true,
-      "projetoid": 1772679449752
-    },
+    
     {
       "nome": "estudar react",
       "criadoem": "2026-03-05T23:59:02.534Z",
