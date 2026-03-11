@@ -22,6 +22,13 @@
       "estado": "em andamento",
       "projetoid": 1772679449752
     },
+     {
+      "nome": "estudar typescript",
+      "criadoem": "2026-03-05T23:59:02.534Z",
+      "id": 1772755142531,
+      "estado": "a fazer",
+      "projetoid": 1772679449752
+    },
     {
       "nome": "fortnite",
       "criadoem": "2026-03-06T01:22:39.249Z",

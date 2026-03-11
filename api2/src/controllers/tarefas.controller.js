@@ -15,9 +15,9 @@ exports.criartarefa = (req,resp) => {
         return resp.status(400).json({error: "as tarefas n podem conter o mesmo nome "})
     }
 
-    if(!nome || !projetoid  ){
+    if(!nome || Number.isNaN(projetoid)){
         return resp.status(400).json({
-            error: "produto n encontrado ou n validado"
+            error: "nome ou projetoid invalido"
         })
 
         
@@ -28,10 +28,14 @@ exports.criartarefa = (req,resp) => {
     if(nome.length<3|| !nome){
         return resp.status(400).json({error:"o nome deve conter ao menos 3 caracteres"})
     }
-    if (Number.isNaN(projetoid)) return resp.status(400).json({ error: "projetoid inválido" });
    novoid = Number(Date.now())
-    let data =new Date().toISOString() 
-    novatarefa.criadoem= data
+   const agora = new Date();
+
+
+const dataIso = agora.toISOString().split("T")[0];
+
+
+    novatarefa.criadoem= dataIso
     novatarefa.id = novoid
     novatarefa.estado = "a fazer"
     novatarefa.projetoid = projetoid
@@ -68,7 +72,6 @@ exports.listarporprojeto =(req,resp) =>{
     const tarefas = db.tarefas
     const projetos = db.projetos
     const projetoid = Number(req.params.projetoid)
-    if (Number.isNaN(projetoid)) return resp.status(400).json({ error: "projetoid inválido" });
     let ta = tarefas.filter(t => t.projetoid === projetoid)
    
     return resp.status(200).json(ta)

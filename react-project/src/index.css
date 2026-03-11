@@ -1,4 +1,40 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body{
   background-color: rgb(112, 111, 111);
-  color: white
+  color: white;
+  
+}
+#main{
+  background-color: #1f1f20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  height: 100dvh;
+}
+#conteudo{
+  background-color: #2d2f34;
+  padding: 20px;
+  width: 50%;
+  height: 100%;
+
+}
+.projeto{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #393b42;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  
+  
+}
+.listas{
+  list-style: none;
+}
+#listatarefas{
+  margin-left: 4%;
 }
