@@ -5,16 +5,19 @@
 }
 body{
   background-color: rgb(112, 111, 111);
-  color: white;
+  color: #e7e6ed;
   
 }
 #main{
-  background-color: #1f1f20;
+  background-color: #2d2f34;
   display: flex;
   align-items: center;
   justify-content: center;
   align-content: center;
+  text-align: center;
+  
   height: 100dvh;
+  text-indent: 1px;
 }
 #conteudo{
   background-color: #2d2f34;
@@ -36,5 +39,100 @@ body{
   list-style: none;
 }
 #listatarefas{
-  margin-left: 4%;
+  margin-left: 7%;
+}
+.tituloprojeto::before{
+  content: "";
+  background-color: #6d9a74;
+  display: inline-block;
+  width: 12px;
+  border-radius: 50%;
+  height: 12px;
+  vertical-align: middle;
+
+  margin-right: 10px;
+}
+.tituloprojeto{
+font-style:italic;
+font-size: large;
+font-weight: 500;
+
+}
+.divtitulo{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  
+}
+.estadoprojeto{
+font-style:italic;
+font-size: large;
+font-weight: 500;
+color: #6d9a74;
+margin-bottom: 5px;
+}
+.estadoprojeto::after{
+ content: "";
+  background-color: #6d9a74;
+  display: inline-block;
+  width: 8px;
+  border-radius: 50%;
+  height: 8px;
+  vertical-align: middle;
+
+  margin-left: 10px;
+
+
+}
+.litarefa{
+  list-style: disc;
+ 
+}
+.data{
+  color: #c6c8d3;
+}
+.buttonb{
+ background-color: #2e3640;
+ color:#8abbf3;
+ width: 100px;
+ height: 30px;
+ border-radius: 10px 0px 0px 10px;
+ font-size: 20px;
+ padding: 5px;
+ display: inline-block;
+ margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.314);
+
+ 
+  
+ 
+}
+.divbtt{
+}
+.input{
+  border: 1px solid rgba(255, 255, 255, 0.314);
+  border-radius: 0px 10px 10px 0px;
+  height: 30px;
+  padding: 5px;
+}
+.input:focus{
+border: none;
+box-shadow: none;
+outline: none;
+}
+.paibt{
+  display: flex;
+  justify-content: center;
+}
+.botaodesativado{
+   background-color: #2e3640;
+ color:#8abbf3;
+ width: 100px;
+ height: 30px;
+ border-radius: 10px;
+ font-size: 20px;
+ padding: 5px;
+ display: inline-block;
+ margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.314);
 }

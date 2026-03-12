@@ -11,10 +11,33 @@
       "criadoem": "2026-03-06T01:21:35.918Z",
       "id": 1772760095918,
       "estado": true
+    },
+    {
+      "nome": "trabalhar",
+      "criadoem": "2026-03-12T03:49:42.604Z",
+      "id": 1773287382604,
+      "estado": true
+    },
+    {
+      "nome": "trabalk",
+      "criadoem": "2026-03-12T03:51:11.717Z",
+      "id": 1773287471717,
+      "estado": true
+    },
+    {
+      "nome": "hkjhgkjdfg",
+      "criadoem": "2026-03-12T03:52:43.774Z",
+      "id": 1773287563774,
+      "estado": true
+    },
+    {
+      "nome": "css",
+      "criadoem": "2026-03-12T03:57:27.301Z",
+      "id": 1773287847301,
+      "estado": true
     }
   ],
   "tarefas": [
-    
     {
       "nome": "estudar react",
       "criadoem": "2026-03-05T23:59:02.534Z",
@@ -22,7 +45,7 @@
       "estado": "em andamento",
       "projetoid": 1772679449752
     },
-     {
+    {
       "nome": "estudar typescript",
       "criadoem": "2026-03-05T23:59:02.534Z",
       "id": 1772755142531,
