@@ -1,42 +1,5 @@
 {
-  "projetos": [
-    {
-      "nome": "estudar",
-      "criadoem": "2026-03-05T02:57:29.752Z",
-      "id": 1772679449752,
-      "estado": true
-    },
-    {
-      "nome": "jogar",
-      "criadoem": "2026-03-06T01:21:35.918Z",
-      "id": 1772760095918,
-      "estado": true
-    },
-    {
-      "nome": "trabalhar",
-      "criadoem": "2026-03-12T03:49:42.604Z",
-      "id": 1773287382604,
-      "estado": true
-    },
-    {
-      "nome": "trabalk",
-      "criadoem": "2026-03-12T03:51:11.717Z",
-      "id": 1773287471717,
-      "estado": true
-    },
-    {
-      "nome": "hkjhgkjdfg",
-      "criadoem": "2026-03-12T03:52:43.774Z",
-      "id": 1773287563774,
-      "estado": true
-    },
-    {
-      "nome": "css",
-      "criadoem": "2026-03-12T03:57:27.301Z",
-      "id": 1773287847301,
-      "estado": true
-    }
-  ],
+  "projetos": [],
   "tarefas": [
     {
       "nome": "estudar react",
@@ -72,6 +35,118 @@
       "id": 1772765874564,
       "estado": "a fazer",
       "projetoid": 1772760095918
+    },
+    {
+      "nome": "ahahaha",
+      "criadoem": "2026-03-19",
+      "id": 1773887188185,
+      "estado": "a fazer",
+      "projetoid": 1773880637004
+    },
+    {
+      "nome": "jss",
+      "criadoem": "2026-03-19",
+      "id": 1773887351623,
+      "estado": "a fazer",
+      "projetoid": 1773880637004
+    },
+    {
+      "nome": "jsss",
+      "criadoem": "2026-03-19",
+      "id": 1773887643886,
+      "estado": "a fazer",
+      "projetoid": 1773880637004
+    },
+    {
+      "nome": "jgdflkgjd",
+      "criadoem": "2026-03-19",
+      "id": 1773888778933,
+      "estado": "a fazer",
+      "projetoid": 1773880637004
+    },
+    {
+      "nome": "est",
+      "criadoem": "2026-03-19",
+      "id": 1773888955521,
+      "estado": "a fazer",
+      "projetoid": 1773880637004
+    },
+    {
+      "nome": "estu",
+      "criadoem": "2026-03-19",
+      "id": 1773888961304,
+      "estado": "a fazer",
+      "projetoid": 1773880637004
+    },
+    {
+      "nome": "dfd",
+      "criadoem": "2026-03-19",
+      "id": 1773889022553,
+      "estado": "a fazer",
+      "projetoid": 1773880637004
+    },
+    {
+      "nome": "estudar",
+      "criadoem": "2026-03-19",
+      "id": 1773889044700,
+      "estado": "a fazer",
+      "projetoid": 1773889036395
+    },
+    {
+      "nome": "ffd",
+      "criadoem": "2026-03-19",
+      "id": 1773889056391,
+      "estado": "a fazer",
+      "projetoid": 1773889036395
+    },
+    {
+      "nome": "dfsdfsfs",
+      "criadoem": "2026-03-19",
+      "id": 1773889142276,
+      "estado": "a fazer",
+      "projetoid": 1773889134700
+    },
+    {
+      "nome": "dfsdfsfsdasdada",
+      "criadoem": "2026-03-19",
+      "id": 1773889145340,
+      "estado": "a fazer",
+      "projetoid": 1773889138348
+    },
+    {
+      "nome": "dfsdfsfsdasdadafsfsd",
+      "criadoem": "2026-03-19",
+      "id": 1773889291076,
+      "estado": "a fazer",
+      "projetoid": 1773889134700
+    },
+    {
+      "nome": "chorar",
+      "criadoem": "2026-03-19",
+      "id": 1773889300464,
+      "estado": "a fazer",
+      "projetoid": 1773889134700
+    },
+    {
+      "nome": "comer",
+      "criadoem": "2026-03-19",
+      "id": 1773889538148,
+      "estado": "a fazer",
+      "projetoid": 1773889134700
+    },
+    {
+      "nome": "jgfklfdjgd",
+      "criadoem": "2026-03-19",
+      "id": 1773889553283,
+      "estado": "a fazer",
+      "projetoid": 1773889138348
+    },
+    {
+      "nome": "jgfklfdjgdfsd",
+      "criadoem": "2026-03-19",
+      "id": 1773889687252,
+      "estado": "a fazer",
+      "projetoid": 1773889684437
     }
   ]
 }
