@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+
 function App() {
   let [mostrarinput, setmostrarinput] = useState(false);
   let [mostrarprojetos, setmostrarprojetos] = useState(false);
@@ -161,7 +162,9 @@ function App() {
                               .replaceAll("/", "-")}
                           </p>
 
-                          <button className="buttondeletetarefa"></button>
+                          <button onClick={()=>{
+                            deletartare(tarefa.id)
+                          }} className="buttondeletetarefa"></button>
 </div>
                       </div>
                 
@@ -213,7 +216,14 @@ function App() {
       </ul>
     );
   }
-
+  async function deletartare(id) {
+    let resp = await fetch(`/tarefas/${id}`,
+      {method:"DELETE"}
+    )
+    if(resp.ok){
+      await chamarapi()
+    }
+  }
   function mostrar() {
     setmostrarprojetos(!mostrarprojetos);
   }
