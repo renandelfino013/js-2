@@ -1,17 +1,14 @@
-const { ler,salvar } = require("../utils/db");
+const banco = require("../utils/db.js");
 
     
-exports.listarprojetos = (req,resp) => {
-    const db= ler()
-    const projetos = db.projetos
+exports.listarprojetos =  async (req,resp) => {
+    const db=   await banco.query("SELECT * FROM projetos ORDER BY ID ASC")
+    const projetos = db.rows
 return resp.status(200).json(projetos)
 
 }
 exports.criarprojetos = (req,resp) =>{
-    const db= ler()
-    const projetos = db.projetos
-    let novoprojeto = req.body
-    let novoid
+    
     let nome = req.body.nome
     if(!nome|| nome.length <3){
         return resp.status(400).json({
@@ -19,38 +16,25 @@ exports.criarprojetos = (req,resp) =>{
         })
 
     }
-   novoid = Number(Date.now())
-    let data =new Date() 
-    novoprojeto.criadoem= data
-    novoprojeto.id = novoid
-    novoprojeto.estado = true
-    projetos.push(novoprojeto)
+    banco.query("INSERT INTO projetos (nome) VALUES ($1)", [nome])    
     
-    salvar(db)
-    return resp.status(201).json(novoprojeto)
+    return resp.status(201).json({msg: "projeto criado com sucesso!"})
 
 }
 exports.atualizarprojeto = (req,resp)=>{
-    const db= ler()
-    const projetos = db.projetos
+   
     let id = Number(req.params.id)
     
     let updateprojeto = req.body
-    let filtrado = projetos.find(p => p.id === id)
 
     if(!updateprojeto.nome || updateprojeto.nome.length <=3 ){
         return resp.status(400).json({error: "nome invalido!!"})
     }
-    else{
-        if(!filtrado){
-        return resp.status(404).json({error: "project not found!!"})
-        }
-    Object.assign(filtrado,req.body)
-    salvar(db)
-    return resp.status(200).json(filtrado)
+    banco.query("UPDATE projetos SET nome = $1 WHERE id = $2", [updateprojeto.nome, id])
+    return resp.status(200).json({msg: "projeto atualizado com sucesso!"})
 }
 
-}
+
 exports.listarporid = (req,resp) =>{
     const db= ler()
     const projetos = db.projetos
@@ -64,20 +48,16 @@ else{
 return resp.status(404).json({error: "project not found!!"})
 }
 }
-exports.deletarprojetos = (req,resp) =>{
-     const db= ler()
-    let projetos = db.projetos
-    let id = Number(req.params.id)
-    let antes = db.projetos.length
-
-
-   db.projetos =  projetos.filter(p => p.id !== id)
-   let depois = db.projetos.length
-   if(antes === depois  ){
-    return resp.status(404).json({msg :"projeto n encontrado"})
-   }
-salvar(db)
-    return resp.status(200).json({msg: "projeto removido com succeso!"})
+exports.deletarprojetos = async  (req,resp) =>{
     
-}
+    
+    let id = Number(req.params.id)
+    
+    let db = await banco.query("DELETE FROM projetos WHERE id = $1", [id])
 
+  
+    return resp.status(200).json({msg: "projeto removido com sucesso!"})
+    
+
+
+}

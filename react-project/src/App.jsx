@@ -147,6 +147,7 @@ function App() {
                     <li key={tarefa.id} className="litarefa">
                       <div className="divtitulo">
                       <p className="txttarefa">
+                       
               <span className="nometarefa">{tarefa.nome}</span>
                 <span className="statustarefa">a fazer</span>
 </p>

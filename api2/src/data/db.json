@@ -5,7 +5,42 @@
       "criadoem": "2026-03-19T23:39:47.984Z",
       "id": 1773963587984,
       "estado": true
+    },
+    {
+      "nome": "estudar",
+      "criadoem": "2026-03-25T00:17:41.396Z",
+      "id": 1774397861396,
+      "estado": true
     }
   ],
-  "tarefas": []
+  "tarefas": [
+    {
+      "nome": "supino reto 4x12",
+      "criadoem": "2026-03-25",
+      "id": 1774397854453,
+      "estado": "a fazer",
+      "projetoid": 1773963587984
+    },
+    {
+      "nome": "react",
+      "criadoem": "2026-03-25",
+      "id": 1774397866878,
+      "estado": "a fazer",
+      "projetoid": 1774397861396
+    },
+    {
+      "nome": "cagar",
+      "criadoem": "2026-04-07",
+      "id": 1775596574715,
+      "estado": "a fazer",
+      "projetoid": 1773963587984
+    },
+    {
+      "nome": "supino reto 3x6 a 10",
+      "criadoem": "2026-04-07",
+      "id": 1775596602822,
+      "estado": "a fazer",
+      "projetoid": 1775596586823
+    }
+  ]
 }

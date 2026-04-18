@@ -1,12 +1,17 @@
 const fs = require("fs")
 const path = require("path")
 const arquivo = path.join(__dirname ,"..", "data" , "db.json")
-function ler(){
-const txt  = fs.readFileSync(arquivo , "utf-8")
-return JSON.parse(txt)
 
-}
-function salvar(dados){
-    fs.writeFileSync(arquivo,JSON.stringify(dados, null ,2))
-}
-module.exports = {ler,salvar}
+const {Client} = require("pg")
+const con = new Client({
+  user: "postgres",
+  host: "localhost",
+  database: "to_do",
+  password: "321776renan",
+  port: 5432,
+})
+con.connect().then(() => console.log("conectado ao banco de dados"))
+
+
+
+module.exports = con
