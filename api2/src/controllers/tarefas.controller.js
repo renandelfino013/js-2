@@ -5,12 +5,8 @@ exports.criartarefa =  async (req,resp) => {
   
     let novatarefa = req.body
     let nome = req.body.nome
-    let projetoid = Number (req.params.projetoid)
-    let filtrado = tarefas.find(p => p.nome === nome)
-    if(filtrado){
-        return resp.status(400).json({error: "as tarefas n podem conter o mesmo nome "})
-    }
-
+    //let projetoid = Number(req.params.projetoid)
+   
    
 
         
@@ -24,7 +20,7 @@ exports.criartarefa =  async (req,resp) => {
 
 
 
- await banco.query("INSERT INTO tarefas (nometarefa, estado, id_projeto_ligado) VALUES ($1, $2, $3)", [nome, 'concluida', projetoid])
+ await banco.query("INSERT INTO tarefas (nometarefa, estado, id_projeto_ligado) VALUES ($1, $2, $3)", [nome, 'pendente', req.params.projetoid])
  
     return resp.status(201).json({msg: "tarefa criada com sucesso!"})
 
@@ -44,31 +40,30 @@ return resp.status(404).json({error: "task not found"})
 }
 exports.listarporprojeto = async (req,resp) =>{
     
-    const projetoid = Number(req.params.projetoid)
-    const db = await banco.query("SELECT * FROM tarefas WHERE projetoid = $1", [projetoid])
-   
-    return resp.status(200).json({tarefas: db.rows})
+    let db = await banco.query("SELECT nometarefa,estado,criado_em,id FROM tarefas WHERE id_projeto_ligado = $1", [req.params.projetoid])
+   //console.log(db.rows)
+    return resp.status(200).json(db.rows)
 }
-exports.atualizartarefa = (req,resp) => {
- const db= ler()
-    const tarefas = db.tarefas
-    let id = Number(req.params.id)
-    
-    let updatetarefa = req.body
-    let filtrado = tarefas.find(p => p.id === id)
-
-    if(!updatetarefa.nome || updatetarefa.nome.length <3 ){
-        return resp.status(400).json({error: "nome invalido!!"})
-    }
-    else{
-        if(!filtrado){
-        return resp.status(404).json({error: "project not found!!"})
-        }
-    Object.assign(filtrado,req.body)
-    salvar(db)
-    return resp.status(200).json(filtrado)
-}
-}
+////exports.atualizartarefa = (req,resp) => {
+//// const db= ler()
+////    const tarefas = db.tarefas
+////    let id = Number(req.params.id)
+////    
+////    let updatetarefa = req.body
+////    let filtrado = tarefas.find(p => p.id === id)
+////
+////    if(!updatetarefa.nome || updatetarefa.nome.length <3 ){
+////        return resp.status(400).json({error: "nome invalido!!"})
+////    }
+////    else{////
+////        if(!filtrado){
+  //      return resp.status(404).json({error: "project not found!!"})
+////        }
+////    Object.assign(filtrado,req.body)
+////    salvar(db)
+////    return resp.status(200).json(filtrado)
+////}
+////}
 exports.atualizarestado =(req,resp) =>{
      const db= ler()
     const tarefas = db.tarefas
@@ -94,18 +89,13 @@ exports.atualizarestado =(req,resp) =>{
 
 
 }
-exports.deletartarefa =(req,resp) =>{
-  const db= ler()
+exports.deletartarefa  = async (req,resp) =>{
     let id = Number(req.params.id)
-    let antes = db.tarefas.length
+    await banco.query("DELETE FROM tarefas WHERE id = $1", [id])
 
-
-   db.tarefas =  tarefas.filter(p => p.id !== id)
-   let depois = db.tarefas.length
-   if(antes === depois  ){
-    return resp.status(404).json({msg :"tarefa n encontrada"})
-   }
-    return resp.status(200).json({msg: "tarefa removida com succeso!"})
+  
+    return resp.status(200).json({msg:"tarefa deletada com sucesso!"})
+  
 
 
 }

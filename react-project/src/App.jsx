@@ -33,11 +33,12 @@ function App() {
     let tarefas = await resp.json();
     settarefas(tarefas);
     setProjetoSelecionado(id);
+    console.log(tarefas);
 
     return tarefas.map((tarefa) => {
       return (
         <li key={tarefa.id}>
-          {tarefa.nome} {tarefa.estado} {tarefa.criadoem}
+          {tarefa.nometarefa} {tarefa.estado} {tarefa.criado_em}
         </li>
       );
     });
@@ -148,13 +149,13 @@ function App() {
                       <div className="divtitulo">
                       <p className="txttarefa">
                        
-              <span className="nometarefa">{tarefa.nome}</span>
+              <span className="nometarefa">{tarefa.nometarefa}</span>
                 <span className="statustarefa">a fazer</span>
 </p>
 
                         <div className="direitatarefa">
                           <p className="data">
-                            {new Date(tarefa.criadoem)
+                            {new Date(tarefa.criado_em)
                               .toLocaleString("pt-BR", {
                                 month: "2-digit",
                                 year: "numeric",
@@ -219,7 +220,7 @@ function App() {
   }
   async function deletartare(id) {
     let resp = await fetch(`/tarefas/${id}`,
-      {method:"DELETE"}
+      {method:"DELETE",headers:{"Content-Type":"application/json"}}
     )
     if(resp.ok){
       await chamarapi()
