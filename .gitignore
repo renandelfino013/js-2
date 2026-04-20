@@ -1,3 +1,6 @@
 api2/src/routes/tempCodeRunnerFile.js
 api2/src/utils/db.js
 api2/src/utils/db.js
+*.json
+*.json
+api2/.env

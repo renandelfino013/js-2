@@ -1,9 +1,10 @@
 const fs = require("fs")
+const env = require ("dotenv").config()
 const path = require("path")
 const arquivo = path.join(__dirname ,"..", "data" , "db.json")
 
-const {Client} = require("pg")
-const con = new Client({
+const {Pool} = require("pg")
+const con = new Pool({
   user: process.env.DB_USER || "postgres",
   host: process.env.DB_HOST || "localhost",
   database: process.env.DB_NAME || "to_do",
