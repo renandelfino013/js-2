@@ -1,0 +1,24 @@
+const banco = require("../utils/db.js");
+
+const jwt = require("jsonwebtoken")
+exports.register = async (req,resp) => {
+    let email = req.body.email
+    let senha = req.body.senha
+
+    await banco.query("INSERT INTO usuarios (email, senha) VALUES ($1, $2)", [email, senha])
+    return resp.status(200).json({msg: "usuario criado com sucesso!"})
+}
+exports.login = async (req,resp) => {
+    let email = req.body.email
+    let senha = req.body.senha
+    const db = await banco.query("SELECT id FROM usuarios WHERE email = $1 AND senha = $2", [email, senha])
+    console.log(db.rows)
+    console.log("JWT_SECRET:", process.env.JWT_SECRET)
+   try{
+    if(db.rows.length > 0){
+        
+       const token = jwt.sign({id: db.rows[0].id}, process.env.JWT_SECRET, {expiresIn: "1h"})
+         return resp.status(200).json({token})
+    }
+    return resp.status(404).json({error: "usuario não encontrado"})
+}
