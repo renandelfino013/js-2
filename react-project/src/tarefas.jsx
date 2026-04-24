@@ -67,9 +67,15 @@ function Home() {
   }
 
   async function mudarnome(id) {
+    let token = JSON.parse(localStorage.getItem("token"));
+    if (!token) {
+      console.error("Token não encontrado. Faça login novamente.");
+      return <Navigate to="/" replace />;
+    }
     let resp = await fetch(`/projetos/${id}`, {
       method: "PATCH",
       headers: {
+          Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -85,10 +91,16 @@ function Home() {
   }
 
   async function adiocionartarefa(id, nome) {
+    let token = JSON.parse(localStorage.getItem("token"));
+    if (!token) {
+      console.error("Token não encontrado. Faça login novamente.");
+      return <Navigate to="/" replace />;
+    }
     let resp = await fetch(`/projetos/${id}/tarefas`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify({
         nome: `${nome}`,
@@ -102,8 +114,17 @@ function Home() {
   }
 
   async function deleteprojeto(id) {
+    let token = JSON.parse(localStorage.getItem("token"));
+    if (!token) {
+      console.error("Token não encontrado. Faça login novamente.");
+      return <Navigate to="/" replace />;
+    }
     let resp = await fetch(`/projetos/${id}`, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
     });
 
     if (resp.ok) {
@@ -151,7 +172,7 @@ function Home() {
                 )}
 
                 <h3 className="estadoprojeto">
-                  {projeto.estado ? "ativo" : "inativo"}
+                  {projeto.estado ? "inativo" : "ativo"}
                 </h3>
               </div>
 
@@ -250,9 +271,12 @@ function Home() {
   }
 
   async function addprojeto() {
+      let token = JSON.parse(localStorage.getItem("token"));
+if(token){
     const resp = await fetch("/projetos", {
       method: "POST",
       headers: {
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -264,7 +288,8 @@ function Home() {
     setprojetos([...projetos, dados]);
     return chamarapi();
   }
-
+  else{    console.error("Token não encontrado. Faça login novamente.");
+  }}
   function Mybutton(props) {
     return (
       <button

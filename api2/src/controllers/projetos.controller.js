@@ -37,7 +37,10 @@ exports.criarprojetos = (req,resp) =>{
 
 }
 exports.atualizarprojeto = (req,resp)=>{
-   
+   const codetoken = req.headers.authorization?.split(" ")[1];
+   console.log(req.headers.authorization);
+   let decoded = jwt.verify(codetoken, process.env.JWT_SECRET)
+   let token = decoded.id
     let id = Number(req.params.id)
     
     let updateprojeto = req.body
@@ -45,7 +48,7 @@ exports.atualizarprojeto = (req,resp)=>{
     if(!updateprojeto.nome || updateprojeto.nome.length <=3 ){
         return resp.status(400).json({error: "nome invalido!!"})
     }
-    banco.query("UPDATE projetos SET nome = $1 WHERE id = $2", [updateprojeto.nome, id])
+    banco.query("UPDATE projetos SET nome = $1 WHERE id = $2 AND usuario_id = $3", [updateprojeto.nome, id,token])
     return resp.status(200).json({msg: "projeto atualizado com sucesso!"})
 }
 
@@ -64,11 +67,18 @@ return resp.status(404).json({error: "project not found!!"})
 }
 }
 exports.deletarprojetos = async  (req,resp) =>{
-    
+    const codetoken = req.headers.authorization?.split(" ")[1];
+   console.log(req.headers.authorization);
+   let decoded = jwt.verify(codetoken, process.env.JWT_SECRET)
+   let token = decoded.id
+   if (!token) {
+    console.error("Token não encontrado. Faça login novamente.");
+    return resp.status(401).json({ error: "Token não encontrado. Faça login novamente." });
+  }
     
     let id = Number(req.params.id)
     
-    let db = await banco.query("DELETE FROM projetos WHERE id = $1", [id])
+    let db = await banco.query("DELETE FROM projetos WHERE id = $1 AND usuario_id = $2", [id, token])
 
   
     return resp.status(200).json({msg: "projeto removido com sucesso!"})
