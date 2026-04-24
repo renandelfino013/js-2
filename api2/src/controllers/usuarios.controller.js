@@ -11,14 +11,17 @@ exports.register = async (req,resp) => {
 exports.login = async (req,resp) => {
     let email = req.body.email
     let senha = req.body.senha
-    const db = await banco.query("SELECT id FROM usuarios WHERE email = $1 AND senha = $2", [email, senha])
+    const db = await banco.query("SELECT id,nome FROM usuarios WHERE email = $1 AND senha = $2", [email, senha])
     console.log(db.rows)
     console.log("JWT_SECRET:", process.env.JWT_SECRET)
+    
    try{
     if(db.rows.length > 0){
         
-       const token = jwt.sign({id: db.rows[0].id}, process.env.JWT_SECRET, {expiresIn: "1h"})
+       const token = jwt.sign({id: db.rows[0].id, nome: db.rows[0].nome}, process.env.JWT_SECRET, {expiresIn: "1h"})
          return resp.status(200).json({token})
     }
     return resp.status(404).json({error: "usuario não encontrado"})
-}
+   } catch (error) {
+    return resp.status(500).json({error: "erro ao fazer login"})
+   }}

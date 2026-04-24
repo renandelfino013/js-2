@@ -231,3 +231,10 @@ body {
   color: #c6c8d3;
   margin: 0;
 }
+.nometitulo {
+  font-style: italic;
+  font-size: large;
+  font-weight: 500;
+  color: #6d9a74;
+  margin-bottom: 10px;
+}

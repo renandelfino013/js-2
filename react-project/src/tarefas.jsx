@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 
 
 function Home() {
+   let token = JSON.parse(localStorage.getItem("token"));
+
+    if (!token) {
+       return <Navigate to="/" replace />;
+    }
   let [mostrarinput, setmostrarinput] = useState(false);
   let [mostrarprojetos, setmostrarprojetos] = useState(false);
   let [texto, settexto] = useState("");
@@ -19,9 +25,18 @@ function Home() {
   }, []);
 
   async function chamarapi() {
-    let resp = await fetch("/projetos");
+ 
+    try {
+    let resp = await fetch("/projetos", {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
     let dados = await resp.json();
-    setprojetos(dados);
+    setprojetos(dados);}
+    catch(error){
+      console.error("Erro ao buscar projetos:", error);
+    }
   }
 
   function mudartexto(e) {
@@ -266,10 +281,14 @@ function Home() {
 
   return (
     <div id="main">
+      
       <div id="conteudo">
-        <div className="paibt">
-          <Mybutton>+</Mybutton>
+        {titulo()}
 
+        <div className="paibt">
+          
+          <Mybutton>+</Mybutton>
+    
           {mostrarinput && (
             <input
               className="input"
@@ -289,6 +308,10 @@ function Home() {
       </div>
     </div>
   );
+}
+function titulo(){
+  let nome = JSON.parse(localStorage.getItem("nome")) 
+  return <h1 className="nometitulo">ola {nome}</h1>
 }
 
 export default Home;

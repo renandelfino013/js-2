@@ -13,8 +13,14 @@ let [senha, setsenha] = useState("");
         headers:{"Content-Type":"application/json"},
         body: JSON.stringify({email, senha})
     }) 
-    if(response.ok){
-        console.log(response.json())}
+     let  data = await response.json();
+     console.log(data)
+     const payload = JSON.parse(atob(data.token.split(".")[1]))
+
+    if( await data.ok){}
+        localStorage.setItem("token", JSON.stringify(await data.token))
+        localStorage.setItem("nome", JSON.stringify(await payload.nome))
+        navigate(`/Home`);
 
 }
     catch(error){

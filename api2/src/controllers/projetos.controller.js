@@ -1,14 +1,29 @@
 const banco = require("../utils/db.js");
+const jwt = require("jsonwebtoken")
 
     
 exports.listarprojetos =  async (req,resp) => {
-    const db=   await banco.query("SELECT * FROM projetos ORDER BY ID ASC")
+   const codetoken = req.headers.authorization?.split(" ")[1];
+   console.log(req.headers.authorization);
+   let decoded = jwt.verify(codetoken, process.env.JWT_SECRET)
+   let token = decoded.id
+   
+    const db = await banco.query("SELECT * FROM projetos WHERE usuario_id = $1", [token])
+   
+   
+   
+    
+   
     const projetos = db.rows
 return resp.status(200).json(projetos)
 
 }
 exports.criarprojetos = (req,resp) =>{
     
+    const codetoken = req.headers.authorization?.split(" ")[1];
+   console.log(req.headers.authorization);
+   let decoded = jwt.verify(codetoken, process.env.JWT_SECRET)
+   let token = decoded.id
     let nome = req.body.nome
     if(!nome|| nome.length <3){
         return resp.status(400).json({
@@ -16,7 +31,7 @@ exports.criarprojetos = (req,resp) =>{
         })
 
     }
-    banco.query("INSERT INTO projetos (nome) VALUES ($1)", [nome])    
+    banco.query("INSERT INTO projetos (nome,usuario_id) VALUES ($1 , $2)", [nome, token])    
     
     return resp.status(201).json({msg: "projeto criado com sucesso!"})
 
