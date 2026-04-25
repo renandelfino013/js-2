@@ -312,7 +312,7 @@ if(token){
 
         <div className="paibt">
           
-          <Mybutton>+</Mybutton>
+          <Mybutton>   +</Mybutton>
     
           {mostrarinput && (
             <input
@@ -330,9 +330,17 @@ if(token){
         </div>
 
         <Mylista />
+      <button className="buttonsair" onClick={sing_in}>sing in</button>
+
       </div>
     </div>
+    
   );
+}
+function sing_in(){
+  localStorage.removeItem("token")
+  localStorage.removeItem("nome")
+  window.location.href = "/"
 }
 function titulo(){
   let nome = JSON.parse(localStorage.getItem("nome")) 

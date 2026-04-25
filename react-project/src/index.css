@@ -16,12 +16,14 @@ body {
   justify-content: center;
   text-align: center;
   height: 100dvh;
+  width: 100dvw;
   text-indent: 1px;
 }
 
 #conteudo {
   background-color: #2d2f34;
   padding: 20px;
+  align-items: center;
   width: 50%;
   height: 100%;
 }
@@ -121,6 +123,9 @@ body {
 .paibt {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
+
 }
 
 .input {
@@ -167,6 +172,11 @@ body {
 
 .pp {
   color: #5b5e65;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  align-items:center;
+  justify-self: center;
+  margin-left: 4dvw
+  ;
 }
 
 .pp:hover {
@@ -238,3 +248,22 @@ body {
   color: #6d9a74;
   margin-bottom: 10px;
 }
+
+.buttonsair {
+  
+  background-color: #2e3640;
+  color: #8abbf3;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 20px;
+  display: inline-block;                                                            
+  margin-top: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.314);
+  text-align: center;
+  
+;  margin-left: 10;
+}
+.buttonsair:hover {
+  background-color: #6d9a74;
+  transition: 0.3s;}
