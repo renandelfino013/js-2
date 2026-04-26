@@ -26,6 +26,7 @@ exports.login = async (req,resp) => {
     if(db.rows.length > 0){
         
        const token = jwt.sign({id: db.rows[0].id, nome: db.rows[0].nome}, process.env.JWT_SECRET, {expiresIn: "1h"})
+         return resp.status(200).json({token})
          
     }
     else{

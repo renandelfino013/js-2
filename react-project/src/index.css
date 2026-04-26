@@ -97,13 +97,11 @@ body {
 .buttonb {
   background-color: #2e3640;
   color: #8abbf3;
-  width: 100px;
+  width: 70px; 
+  
   height: 30px;
   border-radius: 10px 0 0 10px;
   font-size: 20px;
-  padding: 5px;
-  display: inline-block;
-  margin-bottom: 20px;
   border: 1px solid rgba(255, 255, 255, 0.314);
 }
 
@@ -124,7 +122,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 0px;
 
 }
 

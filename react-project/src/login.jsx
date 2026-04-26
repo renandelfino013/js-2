@@ -5,7 +5,7 @@ import "./Login.css";
 
 function Login (){
     let [statusresp, setestatusresp] = useState("");
-    const navigate = useNavigate();
+    const Navigate = useNavigate();
     let [email, setemail] = useState("");
 let [senha, setsenha] = useState("");
 if(localStorage.getItem("token")){
@@ -25,18 +25,17 @@ if(localStorage.getItem("token")){
     console.log(response.status)
      let  data = await response.json();
      console.log(data)
-
-     
-    if ( await response.status === 404||  await response.status === 500) {
-             setestatusresp(true);
-        }
-        else if( await response.status === 200){
+if( await response.status === 200){
      const payload = JSON.parse(atob(data.token.split(".")[1]))
 
         localStorage.setItem("token", JSON.stringify(await data.token))
         localStorage.setItem("nome", JSON.stringify(await payload.nome))
-        setestatusresp(false);
-        navigate(`/Home`);}
+        Navigate(`/Home`);}
+     
+ else if ( await response.status === 404||  await response.status === 500) {
+             setestatusresp(true);
+        }
+         
        
 }
     catch(error){

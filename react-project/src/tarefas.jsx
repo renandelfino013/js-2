@@ -310,24 +310,32 @@ if(token){
       <div id="conteudo">
         {titulo()}
 
-        <div className="paibt">
-          
-          <Mybutton>   +</Mybutton>
-    
-          {mostrarinput && (
-            <input
-              className="input"
-              type="text"
-              onChange={mudartexto}
-              onKeyDown={(e) => {
-                if (e.key == "Enter") {
-                  addprojeto();
-                  console.log(projetos);
-                }
-              }}
-            />
-          )}
-        </div>
+  <div className="paibt">
+  <button
+    className={clicado ? "buttonb" : "botaodesativado"}
+    onClick={() => {
+      setclicado(!clicado);
+      inputtext();
+    }}
+  >
+    +
+  </button>
+
+  {mostrarinput && (
+    <input
+      className="input"
+      type="text"
+      onChange={mudartexto}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          addprojeto();
+        }
+      }}
+    />
+  )}
+</div>
+
+
 
         <Mylista />
       <button className="buttonsair" onClick={sing_in}>sing in</button>
