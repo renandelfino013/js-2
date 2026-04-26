@@ -9,7 +9,7 @@ function Login (){
     let [email, setemail] = useState("");
 let [senha, setsenha] = useState("");
 if(localStorage.getItem("token")){
-    <Navigate to="/Home" />
+    navigate("/Home");
 }
  async function handlelogin(){
     try{
